@@ -91,9 +91,9 @@ WSGI_APPLICATION = 'e_commerce_payu.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': '',
-        'USER': '',
-        'PASSWORD': '',
+        'NAME': 'db',
+        'USER': 'db',
+        'PASSWORD': 'db',
         'HOST': 'db',
         'PORT': ''
     }
