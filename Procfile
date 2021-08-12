@@ -1,1 +1,1 @@
-web: gunicorn e_commerce_payu.wsgi --log-file -
+web: gunicorn src/e_commerce_payu.wsgi --log-file -
