@@ -1,1 +1,1 @@
-web /bin/sh -c gunicorn\ e_commerce_payu.wsgi:application\ --bind\ 0.0.0.0:\$PORT
+web: gunicorn src.wsgi --log-file -
