@@ -1,1 +1,1 @@
-web: gunicorn src.e_commerce_payu.wsgi
+web: gunicorn --chdir src e_commerce_payu.wsgi
