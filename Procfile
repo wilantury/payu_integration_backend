@@ -1,1 +1,0 @@
-web: gunicorn src/e_commerce_payu.wsgi --log-file -
