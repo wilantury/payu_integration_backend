@@ -12,10 +12,23 @@ class LogList(ListAPIView):
     serializer_class = LogPurchaseSerializer
 
 class CreateLog(CreateAPIView):
+    
     serializer_class = LogPurchaseSerializer
     queryset = LogPurchase.objects.all()
 
     def create(self, request, *args, **kwargs):
+
+        risk = request.data["risk"]
+        customer_number = request.data["customer_number"]
+        request.data["date"] = request.data["date"].replace('.','-')
+        if not risk:
+            request.data["risk"] = 0
+        
+        if not customer_number:
+            request.data["customer_number"] = 0
+
+        print("data:", request.data)
+
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
