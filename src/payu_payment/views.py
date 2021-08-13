@@ -18,18 +18,19 @@ class CreateLog(CreateAPIView):
 
     def create(self, request, *args, **kwargs):
 
-        risk = request.data["risk"]
-        customer_number = request.data["customer_number"]
-        request.data["date"] = request.data["date"].replace('.','-')
+        data = request.data.dict()
+        risk = data["risk"]
+        customer_number = data["customer_number"]
+        data["date"] = data["date"].replace('.','-')
         if not risk:
-            request.data["risk"] = 0
+            data["risk"] = 0
         
         if not customer_number:
-            request.data["customer_number"] = 0
+            data["customer_number"] = 0
 
-        print("data:", request.data)
+        print("data:", data)
 
-        serializer = self.get_serializer(data=request.data)
+        serializer = self.get_serializer(data=data)
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
